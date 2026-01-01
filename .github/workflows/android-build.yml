@@ -17,7 +17,13 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Grant Gradle permission
+      - name: Install Gradle
+        run: sudo apt-get update && sudo apt-get install -y gradle
+
+      - name: Generate Gradle Wrapper
+        run: gradle wrapper --gradle-version 8.2
+
+      - name: Grant execute permission
         run: chmod +x gradlew
 
       - name: Build APK
